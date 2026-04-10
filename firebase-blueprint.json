@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user information and preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique ID of the user." },
+        "displayName": { "type": "string", "description": "The name of the user." },
+        "email": { "type": "string", "format": "email", "description": "The email of the user." },
+        "photoURL": { "type": "string", "description": "The profile picture URL." },
+        "mobile": { "type": "string", "description": "The user's mobile number." },
+        "district": { "type": "string", "description": "The user's preferred district." },
+        "role": { "type": "string", "enum": ["user", "admin"], "description": "The user's role." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the profile was created." }
+      },
+      "required": ["uid", "displayName", "email", "role"]
+    },
+    "HistoryItem": {
+      "title": "History Item",
+      "description": "Stores crop recommendations and disease detection results.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The ID of the user who created this item." },
+        "type": { "type": "string", "enum": ["recommendation", "disease"], "description": "The type of history item." },
+        "content": { "type": "string", "description": "The AI generated content." },
+        "district": { "type": "string", "description": "The district context." },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the item was created." }
+      },
+      "required": ["uid", "type", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents."
+    },
+    "/history/{historyId}": {
+      "schema": "HistoryItem",
+      "description": "User history items."
+    }
+  }
+}

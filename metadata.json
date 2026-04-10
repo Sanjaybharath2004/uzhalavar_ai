@@ -1,0 +1,9 @@
+{
+  "name": "Uzhavar AI (உழவர் AI)",
+  "description": "AI-powered agricultural assistant for Tamil Nadu farmers, providing crop recommendations, disease detection, and weather updates in multiple languages.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
